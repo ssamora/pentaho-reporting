@@ -12,7 +12,7 @@
 * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 * See the GNU Lesser General Public License for more details.
 *
-* Copyright (c) 2002-2017 Hitachi Vantara..  All rights reserved.
+* Copyright (c) 2002-2020 Hitachi Vantara..  All rights reserved.
 */
 
 package org.pentaho.plugin.jfreereport.reportcharts;
@@ -25,6 +25,7 @@ import org.jfree.chart.plot.Plot;
 import org.jfree.data.general.Dataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
+import org.pentaho.plugin.jfreereport.reportcharts.metadata.ExtendedPieSectionLabelGenerator;
 import org.pentaho.reporting.engine.classic.core.function.ExpressionRuntime;
 import org.pentaho.reporting.libraries.base.util.StringUtils;
 import org.pentaho.reporting.libraries.formatting.FastDecimalFormat;
@@ -260,11 +261,11 @@ public class PieChartExpression extends AbstractChartExpression {
         new DecimalFormat( fastPercent.getPattern(), new DecimalFormatSymbols( locale ) );
       percentFormat.setRoundingMode( RoundingMode.HALF_UP );
 
-      final StandardPieSectionLabelGenerator labelGen = new StandardPieSectionLabelGenerator( pieLabelFormat,
+      final StandardPieSectionLabelGenerator labelGen = new ExtendedPieSectionLabelGenerator( pieLabelFormat,
         numFormat, percentFormat );
       pp.setLabelGenerator( labelGen );
 
-      final StandardPieSectionLabelGenerator legendGen = new StandardPieSectionLabelGenerator( pieLegendLabelFormat,
+      final StandardPieSectionLabelGenerator legendGen = new ExtendedPieSectionLabelGenerator( pieLegendLabelFormat,
         numFormat, percentFormat );
       pp.setLegendLabelGenerator( legendGen );
     }
